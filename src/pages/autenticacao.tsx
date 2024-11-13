@@ -1,8 +1,11 @@
 import { useState } from "react";
 import AuthInput from "../components/auth/AuthInput";
 import { IconeAtencao } from "../components/icons";
+import useAuthData from "../data/hook/useAuthData";
 
 export default function Autenticacao() {
+    const {loginGoogle, usuario} = useAuthData()
+
     const [modo, setModo] = useState<"login" | "cadastro">("login")
     const [email, setEmail] = useState("")
     const [senha, setSenha] = useState("")
@@ -63,7 +66,7 @@ export default function Autenticacao() {
 
                 <hr className="my-6 border-gray-300 w-full" />
 
-                <button onClick={submeter} className={`w-full bg-red-500 hover:bg-red-400 text-white rounded-lg px-4 py-3 border-none`}>
+                <button onClick={loginGoogle} className={`w-full bg-red-500 hover:bg-red-400 text-white rounded-lg px-4 py-3 border-none`}>
                     Entrar com o Google
                 </button>
 
